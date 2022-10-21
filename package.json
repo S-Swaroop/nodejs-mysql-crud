@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon --no-warnings index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -17,5 +18,8 @@
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
     "objection": "^3.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }

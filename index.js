@@ -1,17 +1,31 @@
 const express = require('express') ;
 const cors = require('cors') ;
-const { default: knex } = require('knex');
+const { Model } = require('objection') ;
+const Knex = require('knex');
 const dbConfig = require('./knexfile').development ;
-
+const courseRouter = require('./Courses/routes') ;
+const ApplicationRouter = require('./Application/routes') ;
+const instructorRouter = require('./Instructor/routes') ;
 
 const app = express() ;
 
-app.use(cors) ;
+const knex = Knex(dbConfig) ;
 
-const db = knex(dbConfig) ;
+Model.knex(knex) ;
+
+app.use(cors()) ;
+
+
+app.use('/course' , courseRouter) ; 
+
+app.use('/application' , ApplicationRouter) ;
+
+app.use('/instructor' , instructorRouter) ;
 
 app.get("/" , (req , res) => {
-    res.send('connected to db') ;
-})
+    res.json({
+        message : "Hi there!"
+    })
+}) ;
 
 app.listen(8000) ;

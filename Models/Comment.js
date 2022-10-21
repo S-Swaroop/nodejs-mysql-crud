@@ -1,8 +1,8 @@
 const { Model } = require('objection') ;
 
-class Instructor extends Model {
+class Comment extends Model {
 
-    static tableName = "instructor" ;
+    static tableName = "comment" ;
 
     static get tableName () {
         return this.tableName ;
@@ -13,4 +13,4 @@ class Instructor extends Model {
     }
 }
 
-module.exports = Instructor ;
+module.exports = Course ;
