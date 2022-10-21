@@ -70,7 +70,6 @@ const insert = async (data) => {
                 max_seats : data.max_seats , 
                 instructor_id : data.instructor_id 
             }) ;
-
             return newCourse ;
         }
     } catch (error) {
@@ -78,6 +77,7 @@ const insert = async (data) => {
         throw error ;
     }
 }
+
 
 module.exports = {
     fetchAll , 

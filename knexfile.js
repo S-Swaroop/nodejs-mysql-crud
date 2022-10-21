@@ -12,6 +12,6 @@ module.exports = {
             password: process.env.PASSWORD ,
             database: process.env.DATABASE ,
         } ,
-        // debug: true
+        debug: true
     } ,
 } ;

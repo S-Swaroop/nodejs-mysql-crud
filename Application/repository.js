@@ -1,4 +1,30 @@
 const Application = require('../Models/Application') ;
+const { raw } = require('objection') ; 
+
+
+const fetchByFilters = async (filters) => {
+    try {
+
+        const namePattern = `${filters.name}%` ;
+        const emailPattern = (`${filters.email}%`).toString() ;
+        console.log(namePattern , emailPattern)
+
+        const application = await Application.query()
+            .where(raw('application.name LIKE ?' , namePattern)) 
+
+        if (application instanceof Application) {
+            return application ;
+        } else {
+            throw {
+                status : 404 , 
+                message : `No such application with name that starts with ${filters.name} or email that starts with ${filters.email}`
+            }
+        }
+    } catch (error) {
+        console.log(`@Applications/repository || ` , error) ;
+        throw error ;
+    }
+}
 
 const fetchById = async (applicationId) => {
     try {
@@ -37,7 +63,7 @@ const fetchAll = async () => {
 const updateById = async (id , data) => {
     try {
         
-        const updatedApplication = await Application.query().patchAndFetchById(id , data) ; 
+        const updatedApplication = await Application.query().patchAndFetchById(id , data) ;
         
         if (updatedApplication instanceof Application) {
             
@@ -83,6 +109,7 @@ const insert = async (data) => {
 }
 
 module.exports = {
+    fetchByFilters ,
     fetchAll , 
     fetchById , 
     updateById , 

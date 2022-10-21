@@ -99,7 +99,7 @@ const createCourse = async (req , res) => {
 
     try {
 
-        const newCourse = await insert(data) ;
+        const newCourse = await insert({ name , max_seats , start_date , instructor_id }) ;
 
         res.status(201).json({
             status : "OK" , 
