@@ -11,6 +11,7 @@ class Application extends Model {
     static get idColumn () {
         return 'id' ;
     }
+
 }
 
 module.exports = Application ;

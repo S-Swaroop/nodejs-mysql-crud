@@ -27,7 +27,6 @@ const getAllCourses = async (req , res) => {
 
 const getCourseById = async (req , res) => {
     const { courseId } = req.params ;
-
     try {
         const course = await fetchById(courseId) ;
         res.status(200).json({
@@ -60,9 +59,7 @@ const updateCourse = async (req , res) => {
     }
 
     try {
-
         const updatedCourse = await updateById(id , data) ;
-
         res.status(201).json({
             status : "OK" , 
             data : {
@@ -98,9 +95,7 @@ const createCourse = async (req , res) => {
     }
 
     try {
-
         const newCourse = await insert({ name , max_seats , start_date , instructor_id }) ;
-
         res.status(201).json({
             status : "OK" , 
             data : {

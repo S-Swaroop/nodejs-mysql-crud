@@ -5,15 +5,15 @@ const { raw } = require('objection') ;
 const fetchByFilters = async (filters) => {
     try {
 
-        const namePattern = `${filters.name}%` ;
+        const namePattern = (`${filters.name}%`).toString() ;
         const emailPattern = (`${filters.email}%`).toString() ;
-        console.log(namePattern , emailPattern)
 
-        const application = await Application.query()
-            .where(raw('application.name LIKE ?' , namePattern)) 
+        const applications = await Application.query()
+            .where('name' , 'like' , namePattern)
+            .where('email' , 'like' , emailPattern) ;
 
-        if (application instanceof Application) {
-            return application ;
+        if (applications[0] instanceof Application) {
+            return applications ;
         } else {
             throw {
                 status : 404 , 

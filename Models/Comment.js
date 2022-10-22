@@ -13,4 +13,4 @@ class Comment extends Model {
     }
 }
 
-module.exports = Course ;
+module.exports = Comment ;

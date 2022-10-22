@@ -6,6 +6,7 @@ const dbConfig = require('./knexfile').development ;
 const courseRouter = require('./Courses/routes') ;
 const ApplicationRouter = require('./Application/routes') ;
 const instructorRouter = require('./Instructor/routes') ;
+const commentRouter = require('./Comment/routes') ;
 
 const app = express() ;
 
@@ -22,6 +23,8 @@ app.use('/course' , courseRouter) ;
 app.use('/application' , ApplicationRouter) ;
 
 app.use('/instructor' , instructorRouter) ;
+
+app.use('/comment' , commentRouter) ;
 
 app.get("/" , (req , res) => {
     res.json({

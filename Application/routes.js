@@ -11,14 +11,14 @@ const { Router } = require('express') ;
 const router = Router() ;
 
 
-// router.get('/' , getAllApplications) ; 
+router.get('/' , getAllApplicationsByFilters) ;
 
 router.get('/:applicationId' , getApplicationById) ;
 
 router.patch('/:applicationId' , updateApplication) ;
 
-router.get('/' , getAllApplicationsByFilters) ;
-
 router.post('/register' , createApplication) ;
+
+// router.get('/' , getAllApplications) ; 
 
 module.exports = router ;
