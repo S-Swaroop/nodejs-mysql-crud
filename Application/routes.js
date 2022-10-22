@@ -11,7 +11,7 @@ const { Router } = require('express') ;
 const router = Router() ;
 
 
-router.get('/' , getAllApplicationsByFilters) ;
+router.get('/search' , getAllApplicationsByFilters) ;
 
 router.get('/:applicationId' , getApplicationById) ;
 
@@ -19,6 +19,6 @@ router.patch('/:applicationId' , updateApplication) ;
 
 router.post('/register' , createApplication) ;
 
-// router.get('/' , getAllApplications) ; 
+router.get('/' , getAllApplications) ; 
 
 module.exports = router ;

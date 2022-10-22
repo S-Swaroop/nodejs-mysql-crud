@@ -9,7 +9,7 @@ exports.up = async knex => {
                 table.increments('id').primary().notNullable() ;
                 table.string('name').notNullable() ;
                 table.string('email').notNullable() ;
-                table.string('phone_number').notNullable() ;
+                table.string('phone_number' , 10).notNullable() ;
                 table.string('linkedin') ;
                 table.enu('status' , ['APPLIED' , 'REJECT' , 'ACCEPT' , 'WAITLIST']).defaultTo('APPLIED') ;
                 table.date('application_date').notNullable().defaultTo(knex.raw('(CURRENT_DATE())')) ;
