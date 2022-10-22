@@ -8,6 +8,7 @@ const ApplicationRouter = require('./Application/routes') ;
 const instructorRouter = require('./Instructor/routes') ;
 const commentRouter = require('./Comment/routes') ;
 require('dotenv').config() ;
+
 //--------------DB connection and config-----------------------//
 const knex = Knex(dbConfig) ;
 

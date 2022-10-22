@@ -2,12 +2,6 @@
 ---
 A RESTful web application where user can create, read, update and delete resources and search them by name and email, built using Nodejs, Express and MySQL stack.
 
-
-Note 1 : It is assumed that the user has **Postman** installed to test the api by sending HTTP requests and **PostgreSQL** to be used as Database.
-
-
-Note 2 : It is also assumed that the user has **Node** (LTS version) , **npm**  &  **nodemon** installed globally.
-
 # Installation & Run
 ---
 ### Step : 1 | Clone this project using Git
@@ -37,6 +31,10 @@ CREATE DATABASE <name_of_database>;
 * Switch to the database created.
 ```
 use <name_of_database>
+```
+* You can exit mysql now
+```
+exit;
 ```
 
 ### Step : 4 | set up enviorment variables
@@ -144,6 +142,7 @@ PORT - as defined in .env file
 /**
  * for the POST request,
  * the request body must contain the payload like this
+ * NOTE : only instructor of the course for which this application is adding a comment is allowed to add comments
 */ 
 {
     "instructor_id": 1, // must be an Integer and a valid instructor.id from the instructor table
@@ -167,7 +166,7 @@ PORT - as defined in .env file
 | first_name   | varchar(255) | NO   |     | NULL    |                |
 | last_name    | varchar(255) | YES  |     | NULL    |                |
 | email        | varchar(255) | NO   |     | NULL    |                |
-| phone_number | varchar(255) | YES  |     | NULL    |                |
+| phone_number | varchar(10) | YES  |     | NULL    |                |
 | linkedin     | varchar(255) | YES  |     | NULL    |                |
 
 * ### course table
@@ -187,7 +186,7 @@ PORT - as defined in .env file
 | id               | int unsigned                                 | NO   | PRI | NULL      | auto_increment    |
 | name             | varchar(255)                                 | NO   |     | NULL      |                   |
 | email            | varchar(255)                                 | NO   |     | NULL      |                   |
-| phone_number     | varchar(255)                                 | NO   |     | NULL      |                   |
+| phone_number     | varchar(10)                                 | NO   |     | NULL      |                   |
 | linkedin         | varchar(255)                                 | YES  |     | NULL      |                   |
 | status           | enum('APPLIED','REJECT','ACCEPT','WAITLIST') | YES  |     | APPLIED   |                   |
 | application_date | date                                         | NO   |     | curdate() | DEFAULT_GENERATED |

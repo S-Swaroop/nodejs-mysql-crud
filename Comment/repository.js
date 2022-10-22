@@ -1,5 +1,5 @@
 const Comment = require('../Models/Comment') ;
-
+const Application = require('../Models/Application') ;
 
 const fetchAll = async () => {
     try {
@@ -31,6 +31,18 @@ const insert = async (data) => {
                 message : 'Comment already exists'
             }
         } else {
+            const applicationXcourse = await Application.query()
+                .select('course.instructor_id')
+                .join('course' , 'course.id' , 'application.course_id')
+                .where('application.id' , '=' , data.application_id) ;
+
+            if (applicationXcourse[0].instructor_id != data.instructor_id) {
+                throw {
+                    status : 409 , 
+                    message : "Instructor unauthorized" ,
+                } ;
+            }
+
             const newComment = await Comment.query().insert({
                 instructor_id : data.instructor_id , 
                 application_id : data.application_id , 
